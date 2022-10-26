@@ -81,8 +81,10 @@ void jugarPlus(tablero& t, banderitas& b, pos p, jugadas& j) {
             for (int i = -1; i <= 1; ++i) {
                 for (int k = -1; k <= 1; ++k) {
                     pos posAdy = make_pair(p.first + i, p.second + k);
-                    agregarJugadasNuevas(posAdy, minasAdyacentes(t, posAdy), j);
-                    jugarPlus(t, b, posAdy, j);
+                    if (estaEnTablero(posAdy, t)) {
+                        agregarJugadasNuevas(posAdy, minasAdyacentes(t, posAdy), j);
+                        jugarPlus(t, b, posAdy, j);
+                    }
                 }
             }
         }
@@ -91,5 +93,24 @@ void jugarPlus(tablero& t, banderitas& b, pos p, jugadas& j) {
 
 /******++++**************************** EJERCICIO sugerirAutomatico121 ***********+++***********************/
 bool sugerirAutomatico121(tablero& t, banderitas& b, jugadas& j, pos& p) {
-    // ...
+    int largoJugadas = j.size();
+    bool existe2 = false, hayPosSugerible = false;
+    int indice2 = 0;
+    for(int i = 0; i < largoJugadas && !existe2; i++) {
+        if(j[i].second == 2) {
+            existe2 = true;
+            indice2 = i;
+        }
+    }
+
+    if(existe2) {
+        if(existen1y1Horizontales(j, j[indice2].first,t)){
+            hayPosSugerible = true;
+            p = sugieroPHorizontal(j[indice2].first, t, j, b, hayPosSugerible);
+        } else if(existen1y1Verticales(j, j[indice2].first,t)) {
+            hayPosSugerible = true;
+            p = sugieroPVertical(j[indice2].first, t, j, b, hayPosSugerible);
+        }
+    }
+    return hayPosSugerible;
 }

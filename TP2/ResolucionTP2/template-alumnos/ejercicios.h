@@ -14,3 +14,4 @@ bool gano(tablero& t, jugadas& j);
 void jugarPlus(tablero& t, banderitas& b, pos p, jugadas& j);
 bool sugerirAutomatico121(tablero& t, banderitas& b, jugadas& j, pos& p);
 
+
