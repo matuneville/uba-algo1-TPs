@@ -1,4 +1,4 @@
-//
+    //
 // Este archivo contiene todas las definiciones de tipo que vamos a usar 
 // en el TP.
 //

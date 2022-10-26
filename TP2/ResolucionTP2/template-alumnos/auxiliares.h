@@ -12,3 +12,7 @@
 bool estaEnTablero (pos p, tablero &t);
 bool hayMina (pos p, tablero& t);
 void removerPosicion (banderitas &b, int posicion);
+int cantPosicionesSinMinas(tablero& t);
+void agregarJugadasNuevas(pos p, int minas, jugadas& j);
+bool esPosicionSinJugar(pos p, jugadas& j);
+bool tieneBanderita(pos p, banderitas b);
