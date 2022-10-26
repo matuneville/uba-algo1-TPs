@@ -9,3 +9,6 @@
 
 #include "definiciones.h"
 
+bool estaEnTablero (pos p, tablero &t);
+bool hayMina (pos p, tablero& t);
+void removerPosicion (banderitas &b, int posicion);
