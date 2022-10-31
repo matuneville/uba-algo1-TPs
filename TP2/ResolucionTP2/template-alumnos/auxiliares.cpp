@@ -24,7 +24,7 @@ void removerPosicion (banderitas &b, int index){
     banderitas nuevoB{};
     for (int i = 0; i < b.size(); ++i) {
         if (i != index)
-            nuevoB.push_back(b[index]);
+            nuevoB.push_back(b[i]);
     }
     b = nuevoB;
 }
@@ -42,7 +42,7 @@ int cantPosicionesSinMinas(tablero& t) {
     return cantSinMinas;
 }
 
-bool esPosicionSinJugar(pos p, jugadas& j) {
+bool esPosicionJugada(pos p, jugadas& j) {
     bool esJugada = false;
     for (int i = 0; i < j.size(); ++i) {
         if(p == j[i].first)
@@ -52,7 +52,7 @@ bool esPosicionSinJugar(pos p, jugadas& j) {
 }
 
 void agregarJugadasNuevas(pos p, int minas, jugadas& j) {
-    if (esPosicionSinJugar(p,j)) {
+    if (not esPosicionJugada(p,j)) {
         jugada elem = make_pair(p, minas);
         j.push_back(elem);
     }
@@ -72,19 +72,20 @@ bool existen1y1Horizontales(jugadas& j, pos posicionCon2,tablero &t) {
     int cuentoUnos = 0;
     for(int i = -1; i <= 1; i++){
         pos buscoUno = make_pair(posicionCon2.first,posicionCon2.second+i);
-        if(!esPosicionSinJugar(buscoUno, j) && minasAdyacentes(t, buscoUno) == 1)
+        if(esPosicionJugada(buscoUno, j) && minasAdyacentes(t, buscoUno) == 1)
             cuentoUnos++;
     }
     if(cuentoUnos == 2)
         existen = true;
     return existen;
 }
+
 bool existen1y1Verticales(jugadas& j, pos posicionCon2, tablero &t){
     bool existen = false;
     int cuentoUnos = 0;
     for(int i = -1; i <= 1; i++){
         pos buscoUno = make_pair(posicionCon2.first+i,posicionCon2.second);
-        if(!esPosicionSinJugar(buscoUno, j) && minasAdyacentes(t, buscoUno) == 1)
+        if(esPosicionJugada(buscoUno, j) && minasAdyacentes(t, buscoUno) == 1)
             cuentoUnos++;
     }
     if(cuentoUnos == 2)
@@ -97,11 +98,11 @@ pos sugieroPHorizontal(pos pos2, tablero &t, jugadas &j, banderitas &b, bool &es
     pos inferior = make_pair(pos2.first + 1, pos2.second);
     pos posSugerida{};
 
-    if (estaEnTablero(superior, t) && esPosicionSinJugar(superior, j) && !tieneBanderita(superior, b)) {
+    if (estaEnTablero(superior, t) && not esPosicionJugada(superior, j) && !tieneBanderita(superior, b)) {
         posSugerida = superior;
         esSugerible = true;
     }
-    else if (estaEnTablero(inferior, t) && esPosicionSinJugar(inferior, j) && !tieneBanderita(inferior, b)) {
+    else if (estaEnTablero(inferior, t) && not esPosicionJugada(inferior, j) && !tieneBanderita(inferior, b)) {
         posSugerida = inferior;
         esSugerible = true;
     }
@@ -114,12 +115,12 @@ pos sugieroPVertical(pos pos2, tablero &t, jugadas &j, banderitas &b, bool &esSu
     pos izquierda = make_pair(pos2.first, pos2.second - 1);
     pos posSugerida{};
 
-    if (estaEnTablero(derecha, t) && esPosicionSinJugar(derecha, j) && !tieneBanderita(derecha, b)) {
+    if (estaEnTablero(derecha, t) && not esPosicionJugada(derecha, j) && !tieneBanderita(derecha, b)) {
         posSugerida = derecha;
         esSugerible = true;
     }
 
-    else if (estaEnTablero(izquierda, t) && esPosicionSinJugar(izquierda, j) && !tieneBanderita(izquierda, b)) {
+    else if (estaEnTablero(izquierda, t) && not esPosicionJugada(izquierda, j) && !tieneBanderita(izquierda, b)) {
         posSugerida = izquierda;
         esSugerible = true;
     }

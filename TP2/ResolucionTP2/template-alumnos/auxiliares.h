@@ -14,7 +14,7 @@ bool hayMina (pos p, tablero& t);
 void removerPosicion (banderitas &b, int posicion);
 int cantPosicionesSinMinas(tablero& t);
 void agregarJugadasNuevas(pos p, int minas, jugadas& j);
-bool esPosicionSinJugar(pos p, jugadas& j);
+bool esPosicionJugada(pos p, jugadas& j);
 bool tieneBanderita(pos p, banderitas &b);
 bool existen1y1Horizontales(jugadas& j, pos posicionCon2, tablero &t);
 bool existen1y1Verticales(jugadas& j, pos posicionCon2, tablero &t);
