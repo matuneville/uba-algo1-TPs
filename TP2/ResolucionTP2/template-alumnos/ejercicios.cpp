@@ -104,7 +104,7 @@ void jugarPlus(tablero& t, banderitas& b, pos p, jugadas& j) {
             for (int i = -1; i <= 1; ++i) {
                 for (int k = -1; k <= 1; ++k) {
                     pos posAdy = make_pair(p.first + i, p.second + k);
-                    if (estaEnTablero(posAdy, t)) {
+                    if (estaEnTablero(posAdy, t) && not tieneBanderita(posAdy, b)) {
                         agregarJugadasNuevas(posAdy, minasAdyacentes(t, posAdy), j);
                         jugarPlus(t, b, posAdy, j);
                     }
