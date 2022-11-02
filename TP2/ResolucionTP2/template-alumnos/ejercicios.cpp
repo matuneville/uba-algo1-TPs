@@ -114,32 +114,31 @@ void jugarPlus(tablero& t, banderitas& b, pos p, jugadas& j) {
     }
 }
 
+
 /******++++**************************** EJERCICIO sugerirAutomatico121 ***********+++***********************/
 
-/* Este algoritmo tiene una complejidad de O(n), siendo n el largo de la secuencia de jugadas.
- * El primer ciclo tiene una complejidad de O(n). Luego, las funciones existen121 tienen ambas complejidad de O(n)
- * (por la función esPosicionJugada). Como estas funciones no van a ejecutarse ambas en una misma iteración, la
- * complejidad de sugerirAutomatico121 es O(n) + O(n) = O(n) */
+/* Este algoritmo tiene una complejidad de O(n^2), siendo n el largo de la secuencia de jugadas.
+ * El ciclo tiene una complejidad de O(n). Luego, las funciones existen121 tienen ambas complejidad de O(n)
+ * (por la función esPosicionJugada). Como estas funciones son ejecutadas dentro del ciclo mencionado, la
+ * complejidad de sugerirAutomatico121 es O(n) * O(n) = O(n^2) */
 
 bool sugerirAutomatico121(tablero& t, banderitas& b, jugadas& j, pos& p) {
     int largoJugadas = j.size();
     bool existe2 = false, hayPosSugerible = false;
     int indice2 = 0;
-    for(int i = 0; i < largoJugadas && !existe2; i++) {
+
+    for(int i = 0; i < largoJugadas && !hayPosSugerible; i++) {
         if(j[i].second == 2) {
-            existe2 = true;
-            indice2 = i;
+            if(existen1y1Horizontales(j, j[i].first,t)){
+                hayPosSugerible = true;
+                p = sugieroPHorizontal(j[i].first, t, j, b, hayPosSugerible);
+            }
+            else if(existen1y1Verticales(j, j[i].first,t)) {
+                hayPosSugerible = true;
+                p = sugieroPVertical(j[i].first, t, j, b, hayPosSugerible);
+            }
         }
     }
 
-    if(existe2) {
-        if(existen1y1Horizontales(j, j[indice2].first,t)){
-            hayPosSugerible = true;
-            p = sugieroPHorizontal(j[indice2].first, t, j, b, hayPosSugerible);
-        } else if(existen1y1Verticales(j, j[indice2].first,t)) {
-            hayPosSugerible = true;
-            p = sugieroPVertical(j[indice2].first, t, j, b, hayPosSugerible);
-        }
-    }
     return hayPosSugerible;
 }

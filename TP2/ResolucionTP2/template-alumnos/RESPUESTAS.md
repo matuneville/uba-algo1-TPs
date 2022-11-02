@@ -7,5 +7,5 @@ En jugarPlus, la complejidad de agregarJugadasNuevas aumentaría a O(n^2), ya qu
 todo el tablero. Por lo tanto, la complejidad de jugarPlus quedaría O(n^2 * m^2). Pero como
 n = m, O(n^2 * m^2) = O(n^4)
 
-En sugerirAutomatico121, el primer ciclo también aumentaria su complejidad a O(n^2), y lo mismo
-sucedería con las funciones existen1y1. Por lo tanto, la complejidad quedaría O(n^2) + O(n^2) = O(n^2)
+En sugerirAutomatico121, el ciclo aumentaria su complejidad a O(n^2), y lo mismo
+sucedería con las funciones existen1y1. Por lo tanto, la complejidad quedaría O(n^2) * O(n^2) = O(n^4).
