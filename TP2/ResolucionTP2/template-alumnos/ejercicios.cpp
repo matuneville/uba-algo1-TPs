@@ -89,11 +89,13 @@ bool gano(tablero& t, jugadas& j) {
 }
 
 /******++++**************************** EJERCICIO jugarPlus ***********+++***********************/
-
-/* Este algoritmo tiene una complejidad de O(n * m^2). La complejidad de agregarJugadasNuevas es O(n),
-   ya que recorre t0do el largo de jugadas. Luego, el peor caso posible para esta función es tener
-   que recorrer todas las casillas del tablero (m^2), cuando ninguna esta jugada ni tiene minas adyacentes.
-   De esta manera, la complejidad es O(n) por todas las casillas = O(n*m^2) */
+/* Este algoritmo tiene una complejidad de O((l + m^2 + n) * n * m^2). En la condición if, se llaman tres
+ * funciones cuyas complejidades son O(l), O(m^2) y O(n), respectivamente, siendo l el largo de la secuencia
+ * de banderitas, m el largo del tablero y n el largo de la secuencia de jugadas. Por lo tanto, cada vez
+ * que se evalúe la condición if, el peor caso tendrá complejidad O(l + m^2 + n). Luego, la función
+ * agregarJugadasNuevas tiene complejidad O(n). Y por ultimo, el peor caso de ejecución de esta función
+ * es tener que recorrer el tablero entero, con complejidad O(m^2). Luego, toda la función tiene una complejidad de
+ * O(l + m^2 + n) * O(n) * O(m^2) = O((l + m^2 + n) * n * m^2) */
 
 void jugarPlus(tablero& t, banderitas& b, pos p, jugadas& j) {
     if (!tieneBanderita(p, b) && estaEnTablero(p,t) && !esPosicionJugada(p,j)) {
