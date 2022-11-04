@@ -16,7 +16,7 @@ TEST (cambiarBanderitaTest, plantoBanderita){
     banderitas plantoBanderita = {{0,1}, {2,1}, {1,0}, {1,2}};
 
     cambiarBanderita(t,j,{1,2},b);
-    EXPECT_EQ(b, plantoBanderita);
+    ASSERT_EQ(b, plantoBanderita);
 }
 
 TEST (cambiarBanderitaTest, sacoBanderita){
@@ -27,5 +27,5 @@ TEST (cambiarBanderitaTest, sacoBanderita){
     banderitas sacoBanderita = {{0,1}, {1,0}, {1,2}};
 
     cambiarBanderita(t,j,{2,1},b);
-    EXPECT_EQ(b, sacoBanderita);
+    ASSERT_EQ(b, sacoBanderita);
 }

@@ -19,7 +19,7 @@ TEST(jugarPlus, descubre1){
     jugadas j = {};
     jugadas jugadaEsperada = {{{0,1},1}};
     jugarPlus(t,b,p,j);
-    EXPECT_EQ(j,jugadaEsperada);
+    ASSERT_EQ(j,jugadaEsperada);
 }
 
 TEST(jugarPlus, descubre6){
@@ -32,10 +32,10 @@ TEST(jugarPlus, descubre6){
     pos p = {1,2};
     banderitas  b = {};
     jugadas j = {};
-    jugadas jugadaEsperada = {{{0,1},1},{{0,2},0},{{1,1},2},
-                              {{1,2},0},{{2,1},1},{{2,2},0}};
+    jugadas jugadaEsperada = {{{1,2},0},{{0,1},1},{{0,2},0},
+                              {{1,1},2},{{2,1},1},{{2,2},0}};
     jugarPlus(t,b,p,j);
-    EXPECT_EQ(j,jugadaEsperada);
+    ASSERT_EQ(j,jugadaEsperada);
 }
 
 TEST(jugarPlus, descubre5){
@@ -48,10 +48,10 @@ TEST(jugarPlus, descubre5){
     pos p = {1,2};
     banderitas  b = {};
     jugadas j = {{{0,1},1}};
-    jugadas jugadaEsperada = {{{0,1},1},{{0,2},0},{{1,1},2},
-                              {{1,2},0},{{2,1},1},{{2,2},0}};
+    jugadas jugadaEsperada = {{{0,1},1},{{1,2},0},{{0,2},0},
+                              {{1,1},2},{{2,1},1},{{2,2},0}};
     jugarPlus(t,b,p,j);
-    EXPECT_EQ(j,jugadaEsperada);
+    ASSERT_EQ(j,jugadaEsperada);
 }
 
 TEST(jugarPlus, descubre4){
@@ -64,10 +64,10 @@ TEST(jugarPlus, descubre4){
     pos p = {1,2};
     banderitas  b = {{1,1}};
     jugadas j = {{{0,1},1}};
-    jugadas jugadaEsperada = {{{0,1},1},{{0,2},0},
-                              {{1,2},0},{{2,1},1},{{2,2},0}};
+    jugadas jugadaEsperada = {{{0,1},1},{{1,2},0},
+                              {{0,2},0},{{2,1},1},{{2,2},0}};
     jugarPlus(t,b,p,j);
-    EXPECT_EQ(j,jugadaEsperada);
+    ASSERT_EQ(j,jugadaEsperada);
 }
 
 

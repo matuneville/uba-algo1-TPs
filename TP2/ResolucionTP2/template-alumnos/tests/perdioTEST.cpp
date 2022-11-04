@@ -19,7 +19,7 @@ TEST (perdioTest, juegoPerdido) {
     jugadas j = {{{0,0},0},{{1,3},2}};
 
     bool juegoPerdido = perdio(t,j);
-    EXPECT_TRUE(juegoPerdido);
+    ASSERT_TRUE(juegoPerdido);
 
 }
 
@@ -35,6 +35,6 @@ TEST (perdioTest, juegoNoPerdido) {
     jugadas j = {{{0,0},0},{{4,0},0}};
 
     bool juegoPerdido = perdio(t,j);
-    EXPECT_FALSE(juegoPerdido);
+    ASSERT_FALSE(juegoPerdido);
 
 }

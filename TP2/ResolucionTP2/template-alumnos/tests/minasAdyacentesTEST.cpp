@@ -20,10 +20,10 @@ TEST(minasAdyacentesTest, NingunaMinaAdy){
             {false, false, false, true, false}
     };
     int minasAdy1 = minasAdyacentes(t, {0,0});
-    EXPECT_EQ(minasAdy1, 0);
+    ASSERT_EQ(minasAdy1, 0);
 
     int minasAdy2 = minasAdyacentes(t, {2,1});
-    EXPECT_EQ(minasAdy2, 0);
+    ASSERT_EQ(minasAdy2, 0);
 }
 
 TEST(minasAdyacentesTest, UnaODosMinaAdy){
@@ -36,13 +36,13 @@ TEST(minasAdyacentesTest, UnaODosMinaAdy){
             {false, false, false, true, false}
     };
     int minasAdy1 = minasAdyacentes(t, {3,4});
-    EXPECT_EQ(minasAdy1, 1);
+    ASSERT_EQ(minasAdy1, 1);
 
     int minasAdy2 = minasAdyacentes(t, {4,4});
-    EXPECT_EQ(minasAdy2, 2);
+    ASSERT_EQ(minasAdy2, 2);
 
     int minasAdy3 = minasAdyacentes(t, {3,3});
-    EXPECT_EQ(minasAdy3, 2);
+    ASSERT_EQ(minasAdy3, 2);
 }
 
 TEST(minasAdyacentesTest, TresMinaAdy){
@@ -55,8 +55,8 @@ TEST(minasAdyacentesTest, TresMinaAdy){
             {false, false, false, true, false}
     };
     int minasAdy1 = minasAdyacentes(t, {0,4});
-    EXPECT_EQ(minasAdy1, 3);
+    ASSERT_EQ(minasAdy1, 3);
 
     int minasAdy2 = minasAdyacentes(t, {2,4});
-    EXPECT_EQ(minasAdy2, 3);
+    ASSERT_EQ(minasAdy2, 3);
 }
