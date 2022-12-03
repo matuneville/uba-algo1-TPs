@@ -96,7 +96,7 @@ bool existen1y1Verticales(jugadas& j, pos posicionCon2, tablero &t){
 pos sugieroPHorizontal(pos pos2, tablero &t, jugadas &j, banderitas &b){
     pos superior = make_pair(pos2.first - 1, pos2.second);
     pos inferior = make_pair(pos2.first + 1, pos2.second);
-    pos posSugerida{};
+    pos posSugerida = {-1,-1};
 
     if (estaEnTablero(superior, t) && !esPosicionJugada(superior, j) && !tieneBanderita(superior, b)
     && minasAdyacentes(t,superior) >= 2 && t[superior.first][superior.second - 1] &&t[superior.first][superior.second + 1]) {
@@ -113,7 +113,7 @@ pos sugieroPHorizontal(pos pos2, tablero &t, jugadas &j, banderitas &b){
 pos sugieroPVertical(pos pos2, tablero &t, jugadas &j, banderitas &b){
     pos derecha = make_pair(pos2.first, pos2.second + 1);
     pos izquierda = make_pair(pos2.first, pos2.second - 1);
-    pos posSugerida{};
+    pos posSugerida = {-1,-1};
 
     if (estaEnTablero(derecha, t) && !esPosicionJugada(derecha, j) && !tieneBanderita(derecha, b)
     && minasAdyacentes(t,derecha) >= 2 && t[derecha.first+1][derecha.second] && t[derecha.first-1][derecha.second]) {

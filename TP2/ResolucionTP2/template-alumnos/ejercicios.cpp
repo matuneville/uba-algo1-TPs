@@ -98,7 +98,7 @@ bool gano(tablero& t, jugadas& j) {
  * O(l + m^2 + n) * O(n) * O(m^2) = O((l + m^2 + n) * n * m^2) */
 
 void jugarPlus(tablero& t, banderitas& b, pos p, jugadas& j) {
-    if (!tieneBanderita(p, b) && estaEnTablero(p,t) && !esPosicionJugada(p,j)) {
+    if (!tieneBanderita(p, b) && estaEnTablero(p,t) && !esPosicionJugada(p,j) && !perdio(t,j)) {
         int minasAdy = minasAdyacentes(t, p);
         if (minasAdy >= 1)
             agregarJugadasNuevas(p, minasAdy, j);

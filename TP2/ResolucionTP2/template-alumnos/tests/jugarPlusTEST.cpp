@@ -69,5 +69,20 @@ TEST(jugarPlus, descubre4){
     jugarPlus(t,b,p,j);
     ASSERT_EQ(j,jugadaEsperada);
 }
+TEST(jugarPlus, tocaMina){
+    tablero t = {
+            {true, false, false},
+            {false, false, true},
+            {true, false, false}
+
+    };
+    pos p = {1,2};
+    banderitas  b = {{1,1}};
+    jugadas j = {{{0,1},1}};
+    jugadas jugadaEsperada = {{{0,1},1},{{1,2},0}};
+    jugarPlus(t,b,p,j);
+    ASSERT_EQ(j,jugadaEsperada);
+}
+
 
 
