@@ -89,13 +89,17 @@ bool gano(tablero& t, jugadas& j) {
 }
 
 /******++++**************************** EJERCICIO jugarPlus ***********+++***********************/
-/* Este algoritmo tiene una complejidad de O((l + m^2 + n) * n * m^2). En la condición if, se llaman tres
- * funciones cuyas complejidades son O(l), O(m^2) y O(n), respectivamente, siendo l el largo de la secuencia
- * de banderitas, m el largo del tablero y n el largo de la secuencia de jugadas. Por lo tanto, cada vez
- * que se evalúe la condición if, el peor caso tendrá complejidad O(l + m^2 + n). Luego, la función
- * agregarJugadasNuevas tiene complejidad O(n). Y por ultimo, el peor caso de ejecución de esta función
- * es tener que recorrer el tablero entero, con complejidad O(m^2). Luego, toda la función tiene una complejidad de
- * O(l + m^2 + n) * O(n) * O(m^2) = O((l + m^2 + n) * n * m^2) */
+// Complejidad corregida
+/* Este algoritmo tiene una complejidad de O(m^2 * (l + n)).
+ * Cada vez que se llama la función con una posición, uno de los chequeos que realiza la misma para ejecutarse
+ * es fijarse que la posición no se encuentre en la lista de jugadas. Solo en caso de que la posición
+ * no se encuentre ahí, entonces la función se ejecuta, y agrega luego dicha posición a la lista.
+ * Por esa razón consideramos que en el peor caso, la función debe llamarse para todas las posiciones del tablero
+ * (O(m^2)), y que la recursión no podría llamarse mas de una vez sobre la misma posición.
+ * Luego, cada vez que la función es llamada, realiza los chequeos con las funciones tieneBanderita,
+ * estaEnTablero, esPosicionJugada y perdio, que tienen las siguientes complejidades, respectivamente:
+ *  O(l), O(1), O(n) y O(n). Luego, si pasa esos chequeos, llama a agregarJugadasNuevas, que tiene complejidad O(n).
+ *  De esta manera, la complejidad de este algoritmo es O(m^2 * (l + 3n)) = O(m^2 * (l + n)) */
 
 void jugarPlus(tablero& t, banderitas& b, pos p, jugadas& j) {
     if (!tieneBanderita(p, b) && estaEnTablero(p,t) && !esPosicionJugada(p,j) && !perdio(t,j)) {
@@ -130,11 +134,11 @@ bool sugerirAutomatico121(tablero& t, banderitas& b, jugadas& j, pos& p) {
         if(j[i].second == 2) {
             if(existen1y1Horizontales(j, j[i].first,t)){
                 hayPosSugerible = true;
-                p = sugieroPHorizontal(j[i].first, t, j, b, hayPosSugerible);
+                p = sugieroPHorizontal(j[i].first, t, j, b);
             }
             else if(existen1y1Verticales(j, j[i].first,t)) {
                 hayPosSugerible = true;
-                p = sugieroPVertical(j[i].first, t, j, b, hayPosSugerible);
+                p = sugieroPVertical(j[i].first, t, j, b);
             }
         }
     }

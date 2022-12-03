@@ -21,13 +21,11 @@ bool hayMina (pos p, tablero& t){
 }
 
 void removerPosicion (banderitas &b, int index){
-    banderitas nuevoB{};
-    for (int i = 0; i < b.size(); ++i) {
-        if (i != index)
-            nuevoB.push_back(b[i]);
-    }
-    b = nuevoB;
+    for(int i = index; i < b.size()-1; i++)
+        b[i] = b[i+1];
+    b.pop_back();
 }
+
 
 int cantPosicionesSinMinas(tablero& t) {
     int cantSinMinas = 0;
