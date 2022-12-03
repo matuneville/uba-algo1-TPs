@@ -120,10 +120,11 @@ void jugarPlus(tablero& t, banderitas& b, pos p, jugadas& j) {
  * (por la función esPosicionJugada). Como estas funciones son ejecutadas dentro del ciclo mencionado, la
  * complejidad de sugerirAutomatico121 es O(n) * O(n) = O(n^2) */
 
+
 bool sugerirAutomatico121(tablero& t, banderitas& b, jugadas& j, pos& p) {
     int largoJugadas = j.size();
-    bool existe2 = false, hayPosSugerible = false;
-    int indice2 = 0;
+    bool hayPosSugerible = false;
+    p = {-1,-1};
 
     for(int i = 0; i < largoJugadas && !hayPosSugerible; i++) {
         if(j[i].second == 2) {
@@ -137,6 +138,5 @@ bool sugerirAutomatico121(tablero& t, banderitas& b, jugadas& j, pos& p) {
             }
         }
     }
-
     return hayPosSugerible;
 }

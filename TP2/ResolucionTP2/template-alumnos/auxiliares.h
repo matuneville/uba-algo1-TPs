@@ -18,5 +18,5 @@ bool esPosicionJugada(pos p, jugadas& j);
 bool tieneBanderita(pos p, banderitas &b);
 bool existen1y1Horizontales(jugadas& j, pos posicionCon2, tablero &t);
 bool existen1y1Verticales(jugadas& j, pos posicionCon2, tablero &t);
-pos sugieroPHorizontal(pos pos2, tablero &t, jugadas &j, banderitas &b, bool &esSugerible);
-pos sugieroPVertical(pos pos2, tablero &t, jugadas &j, banderitas &b, bool &esSugerible);
+pos sugieroPHorizontal(pos pos2, tablero &t, jugadas &j, banderitas &b);
+pos sugieroPVertical(pos pos2, tablero &t, jugadas &j, banderitas &b);

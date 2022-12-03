@@ -93,7 +93,7 @@ bool existen1y1Verticales(jugadas& j, pos posicionCon2, tablero &t){
     return existen;
 }
 
-pos sugieroPHorizontal(pos pos2, tablero &t, jugadas &j, banderitas &b, bool &esSugerible){
+pos sugieroPHorizontal(pos pos2, tablero &t, jugadas &j, banderitas &b){
     pos superior = make_pair(pos2.first - 1, pos2.second);
     pos inferior = make_pair(pos2.first + 1, pos2.second);
     pos posSugerida{};
@@ -101,18 +101,16 @@ pos sugieroPHorizontal(pos pos2, tablero &t, jugadas &j, banderitas &b, bool &es
     if (estaEnTablero(superior, t) && !esPosicionJugada(superior, j) && !tieneBanderita(superior, b)
     && minasAdyacentes(t,superior) >= 2 && t[superior.first][superior.second - 1] &&t[superior.first][superior.second + 1]) {
         posSugerida = superior;
-        esSugerible = true;
     }
     else if (estaEnTablero(inferior, t) && !esPosicionJugada(inferior, j) && !tieneBanderita(inferior, b)
     && minasAdyacentes(t,inferior) >= 2 && t[inferior.first][inferior.second - 1] &&t[inferior.first][inferior.second + 1]) {
         posSugerida = inferior;
-        esSugerible = true;
     }
 
     return posSugerida;
 }
 
-pos sugieroPVertical(pos pos2, tablero &t, jugadas &j, banderitas &b, bool &esSugerible){
+pos sugieroPVertical(pos pos2, tablero &t, jugadas &j, banderitas &b){
     pos derecha = make_pair(pos2.first, pos2.second + 1);
     pos izquierda = make_pair(pos2.first, pos2.second - 1);
     pos posSugerida{};
@@ -120,13 +118,11 @@ pos sugieroPVertical(pos pos2, tablero &t, jugadas &j, banderitas &b, bool &esSu
     if (estaEnTablero(derecha, t) && !esPosicionJugada(derecha, j) && !tieneBanderita(derecha, b)
     && minasAdyacentes(t,derecha) >= 2 && t[derecha.first+1][derecha.second] && t[derecha.first-1][derecha.second]) {
         posSugerida = derecha;
-        esSugerible = true;
     }
 
     else if (estaEnTablero(izquierda, t) && !esPosicionJugada(izquierda, j) && !tieneBanderita(izquierda, b)
     && minasAdyacentes(t,izquierda) >= 2 && t[izquierda.first+1][izquierda.second] &&t[izquierda.first-1][izquierda.second]) {
         posSugerida = izquierda;
-        esSugerible = true;
     }
 
 

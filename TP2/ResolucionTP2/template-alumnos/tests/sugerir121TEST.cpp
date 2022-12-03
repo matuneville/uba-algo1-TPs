@@ -8,6 +8,27 @@
 using namespace std;
 
 
+TEST(sugerir121TEST, ningunaPosSugerible){
+    tablero t4 = {
+            { cMINA,  cVACIA,  cVACIA,cMINA},
+            { cVACIA, cVACIA, cVACIA, cMINA},
+            { cVACIA, cVACIA,  cVACIA, cVACIA },
+            { cVACIA, cVACIA, cMINA, cVACIA },
+    };
+    jugadas juegoValido2 = {
+            jugada(pos(2,1),0),jugada(pos(3,3),1),
+            jugada(pos(2,0),0),jugada(pos(2,3),1), jugada(pos(1,0),1),
+            jugada(pos(2,2),1),jugada(pos(1,1),1), jugada(pos(1,2),2)
+    };
+    pos p = {};
+    banderitas b;
+    pos sugerible = {-1,-1};
+    bool u = sugerirAutomatico121(t4,b,juegoValido2,p);
+    bool o = (p == sugerible);
+    bool x = (!u && o);
+    ASSERT_TRUE(x);
+}
+
 TEST(sugerir121TEST, 121horizontal){
     tablero t4 = {
             { cMINA,  cVACIA,  cMINA,cVACIA},
@@ -103,25 +124,6 @@ TEST(sugerir121TEST, dosSugeridas){
     bool u = sugerirAutomatico121(t4,b,juegoValido2,p);
     bool o = (u && (p == sugerible1 || p == sugerible2));
     ASSERT_TRUE(o);
-}
-TEST(sugerir121TEST, ninguna){
-    tablero t4 = {
-            { cMINA,  cVACIA,  cVACIA,cMINA},
-            { cVACIA, cVACIA, cVACIA, cMINA},
-            { cVACIA, cVACIA,  cVACIA, cVACIA },
-            { cVACIA, cVACIA, cMINA, cVACIA },
-    };
-    jugadas juegoValido2 = {
-            jugada(pos(2,1),0),jugada(pos(3,3),1),
-            jugada(pos(2,0),0),jugada(pos(2,3),1), jugada(pos(1,0),1),
-            jugada(pos(2,2),1),jugada(pos(1,1),1), jugada(pos(1,2),2)
-    };
-    pos p = {};
-    banderitas b;
-    pos sugerible = {};
-    bool u = sugerirAutomatico121(t4,b,juegoValido2,p);
-    bool o = (u && p == sugerible);
-    ASSERT_FALSE(o);
 }
 
 TEST(sugerir121TEST, dosPosibles121){
