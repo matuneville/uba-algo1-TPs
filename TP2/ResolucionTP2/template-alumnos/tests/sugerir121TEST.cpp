@@ -75,14 +75,14 @@ TEST(sugerir121TEST, 121verticalLadoIzquierda){
             { cVACIA, cVACIA, cVACIA, cVACIA },
     };
     jugadas juegoValido = {
-            jugada(pos(0,2),1),jugada(pos(1,1),2), jugada(pos(3,3),0),jugada(pos(0,1),1),
+            jugada(pos(0,2),1),jugada(pos(1,1),2),jugada(pos(1,2),2), jugada(pos(3,3),0),jugada(pos(0,1),1),
             jugada(pos(1,3),1), jugada(pos(2,1),1)
     };
     pos p = {};
     banderitas b = {};
-    pos sugerible = {1,0};
+    pos sugerible1 = {1,0};
     bool u = sugerirAutomatico121(t,b,juegoValido,p);
-    bool o = (u && p == sugerible);
+    bool o = (u && p == sugerible1 );
     ASSERT_TRUE(o);
 }
 
@@ -96,11 +96,11 @@ TEST(sugerir121TEST, 121horizontalAbajo){
     jugadas juegoValido2 = {
             jugada(pos(0,2),1),jugada(pos(1,3),1),jugada(pos(2,1),2),
             jugada(pos(3,3),1),jugada(pos(2,0),1),jugada(pos(2,3),1),
-            jugada(pos(2,2),1)
+            jugada(pos(2,2),1), jugada(pos(1,1),0)
     };
     pos p = {};
     banderitas b;
-    pos sugerible (3,1);
+    pos sugerible1 (3,1);
     bool u = sugerirAutomatico121(t4,b,juegoValido2,p);
     bool o = (u && p == sugerible1 );
     ASSERT_TRUE(o);
@@ -147,5 +147,29 @@ TEST(sugerir121TEST, dosPosibles121){
     pos sugerible2 (0,1);
     bool u = sugerirAutomatico121(t4,b,juegoValido2,p);
     bool o = (u && (p == sugerible1 || p == sugerible2));
+    ASSERT_TRUE(o);
+}
+TEST(sugerir121TEST, dosPosibles121_2){
+    tablero t4 = {
+            { cMINA,  cVACIA,  cMINA,cVACIA,cVACIA},
+            { cVACIA, cVACIA, cVACIA, cVACIA,cVACIA}, //aca, pos 1,3
+            { cVACIA, cVACIA,  cVACIA, cVACIA, cMINA},
+            { cVACIA, cVACIA, cVACIA, cVACIA, cVACIA},
+            {cVACIA , cVACIA, cMINA, cVACIA,cMINA}
+    };
+    jugadas juegoValido2 = {
+            jugada(pos(1,3),2),jugada(pos(3,3),2),
+            jugada(pos(2,0),0),jugada(pos(2,3),1), jugada(pos(1,0),1),
+            jugada(pos(2,2),0),jugada(pos(1,1),2), jugada(pos(1,2),1),
+            jugada(pos(4,3),2),jugada(pos(0,3),1)
+    };
+    pos p = {};
+    banderitas b;
+    pos sugerible1 (3,4);
+    pos sugerible2 (0,1);
+    pos sugerible3 (1,4);
+    pos sugerible4 (1,2);
+    bool u = sugerirAutomatico121(t4,b,juegoValido2,p);
+    bool o = (u && (p == sugerible1 || p == sugerible2 || p == sugerible3 || p == sugerible4));
     ASSERT_TRUE(o);
 }
