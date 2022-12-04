@@ -102,9 +102,10 @@ TEST(sugerir121TEST, 121horizontalAbajo){
     banderitas b;
     pos sugerible (3,1);
     bool u = sugerirAutomatico121(t4,b,juegoValido2,p);
-    bool o = (u && p == sugerible);
+    bool o = (u && p == sugerible1 );
     ASSERT_TRUE(o);
 }
+
 TEST(sugerir121TEST, dosSugeridas){
     tablero t4 = {
             { cMINA,  cVACIA,  cMINA,cVACIA},

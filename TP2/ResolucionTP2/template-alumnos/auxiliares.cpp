@@ -20,7 +20,7 @@ bool hayMina (pos p, tablero& t){
     return (t[p.first][p.second]);
 }
 
-void removerPosicion (banderitas &b, int index){
+void removerPosicion (banderitas &b, int index){    // rehecho sin usar otro vector
     for(int i = index; i < b.size()-1; i++)
         b[i] = b[i+1];
     b.pop_back();
@@ -122,7 +122,6 @@ pos sugieroPVertical(pos pos2, tablero &t, jugadas &j, banderitas &b){
     && minasAdyacentes(t,izquierda) >= 2 && t[izquierda.first+1][izquierda.second] &&t[izquierda.first-1][izquierda.second]) {
         posSugerida = izquierda;
     }
-
 
     return posSugerida;
 }
